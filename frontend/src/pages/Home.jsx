@@ -4,6 +4,8 @@ import Hero from '../components/Hero'
 import Card from '../components/Card'
 import LatestProducts from '../components/LatestProducts'
 import BestSelling from '../components/BestSelling'
+import Specification from '../components/Specification'
+import NewsLetter from '../components/NewsLetter'
 
 const Home = () => {
   return (
@@ -12,6 +14,8 @@ const Home = () => {
         <Hero />
         <LatestProducts />
         <BestSelling />
+        <Specification />
+        <NewsLetter />
     </div>
   )
 }
