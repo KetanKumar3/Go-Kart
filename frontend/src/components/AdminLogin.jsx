@@ -36,7 +36,7 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="w-full min-h-screen flex justify-center items-center px-6 py-10 bg-gray-50">
+    <div className="w-full flex justify-center items-center px-6 py-10 bg-gray-50">
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg space-y-6"

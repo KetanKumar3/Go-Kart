@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const [addelement, setAddElement] = useState({
@@ -6,6 +7,22 @@ const Dashboard = () => {
     name: "",
     price: "",
   });
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+          const handleStorageChange = () => {
+              const token = localStorage.getItem("adminToken");
+              if (!token) {
+                navigate("/admin/login");
+              }
+          };
+  
+          window.addEventListener("storage", handleStorageChange);
+          handleStorageChange();
+  
+          return () => window.removeEventListener("storage", handleStorageChange);
+      }, []);
 
   // Handles both text and file inputs
   const handleChange = (e) => {
@@ -19,17 +36,31 @@ const Dashboard = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     console.log("Uploaded Data:");
     console.log("Image File:", addelement.image);
     console.log("Product Name:", addelement.name);
     console.log("Price:", addelement.price);
+
+    const formData = new FormData();
+  formData.append("image", addelement.image);
+  formData.append("name", addelement.name);
+  formData.append("price", addelement.price);
+
+    const res = await fetch("http://localhost:3000/product/add", {
+        method: "POST",
+        body: formData, 
+    });
+
+    const data = await res.json();
+    console.log(data);
   };
 
   return (
-    <div className="w-full min-h-screen flex justify-center items-center px-6 py-10 bg-gray-50">
+    <div className="w-full  flex justify-center items-center px-6 py-10 bg-gray-50">
+      
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg space-y-6"

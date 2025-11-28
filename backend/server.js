@@ -14,6 +14,9 @@ app.use(cors({
     origin:"http://localhost:5173",
     credentials:true
 }))
+
+app.use("/uploads", express.static("uploads"));
+
 app.use(express.json())
 app.use(cookieParser())
 app.get('/',(req,res)=>{
@@ -21,6 +24,8 @@ app.get('/',(req,res)=>{
 })
 
 app.use('/',router)
+console.log("Working directory:", process.cwd());
+
 
 const PORT = process.env.PORT
 

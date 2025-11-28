@@ -1,4 +1,5 @@
-import jwt from "jsonwebtoken";
+import jwt from 'jsonwebtoken'
+import Product from '../models/Product.js'
 
 export const adminLogin = async (req, res) => {
     try {
@@ -22,3 +23,29 @@ export const adminLogin = async (req, res) => {
     }
 
 }
+
+export const addProduct = async (req, res) => {
+  try {
+    const { name, price } = req.body;
+    const image = req.file ? req.file.filename : null;
+
+    if (!name || !price || !image) {
+      return res.status(400).json({ msg: "All fields are required" });
+    }
+
+    const newProduct = await Product.create({
+      name,
+      price,
+      image,
+    });
+
+    return res.status(200).json({
+      success: true,
+      msg: "Product added successfully",
+      product: newProduct,
+    });
+
+  } catch (err) {
+    return res.status(500).json({ msg: err.message });
+  }
+};
