@@ -5,6 +5,8 @@ const connectDB = require('./db/connectDB')
 const cors = require('cors')
 const router = require('./routes/userRoutes')
 const cookieParser = require('cookie-parser')
+const path = require("path");
+
 
 dotenv.config()
 
@@ -19,6 +21,7 @@ app.use("/uploads", express.static("uploads"));
 
 app.use(express.json())
 app.use(cookieParser())
+app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 app.get('/',(req,res)=>{
     res.send("hello bro")
 })

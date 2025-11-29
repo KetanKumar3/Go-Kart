@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+
 
 const Dashboard = () => {
   const [addelement, setAddElement] = useState({
@@ -56,6 +58,8 @@ const Dashboard = () => {
 
     const data = await res.json();
     console.log(data);
+    toast.success(data.msg)
+
   };
 
   return (

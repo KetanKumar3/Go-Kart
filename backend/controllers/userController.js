@@ -49,3 +49,8 @@ export const addProduct = async (req, res) => {
     return res.status(500).json({ msg: err.message });
   }
 };
+
+export const fetchProduct = async (req,res) => {
+       const product = await Product.find()
+       return res.json({product:product})
+}
