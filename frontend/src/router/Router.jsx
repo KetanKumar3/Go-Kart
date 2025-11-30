@@ -5,6 +5,8 @@ import Shop from '../pages/Shop'
 import Dashboard from '../pages/Dashboard'
 import AdminLogin from '../components/AdminLogin'
 import Admin from '../pages/Admin'
+import UserLogin from '../components/UserLogin'
+import UserSignup from '../components/UserSignup'
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -23,7 +25,15 @@ const Router = () => {
     {
         path:'/admin/dashboard',
         element:<Dashboard />
-    }
+    },
+    {
+        path:'/user/login',
+        element:<UserLogin />
+    },
+    {
+        path:'/user/signup',
+        element:<UserSignup />
+    },
   ])
   return (
     <div>
