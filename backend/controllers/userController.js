@@ -28,16 +28,17 @@ export const adminLogin = async (req, res) => {
 
 export const addProduct = async (req, res) => {
   try {
-    const { name, price } = req.body;
+    const { name, price, description } = req.body;
     const image = req.file ? req.file.filename : null;
 
-    if (!name || !price || !image) {
+    if (!name || !price || !image || !description) {
       return res.status(400).json({ msg: "All fields are required" });
     }
 
     const newProduct = await Product.create({
       name,
       price,
+      description,
       image,
     });
 
@@ -141,5 +142,19 @@ export const removeProduct = async (req, res) => {
 
   } catch (error) {
     return res.status(500).json({ success: false, msg: "Server Error", error: error.message });
+  }
+};
+
+
+export const singleProduct = async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    console.log(req.params.id)
+    if (!product) {
+      return res.json({ msg: "Product not found" });
+    }
+    return res.json({ product });
+  } catch (err) {
+    return res.status(500).json({ msg: err.message });
   }
 };

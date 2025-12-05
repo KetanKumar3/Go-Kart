@@ -1,8 +1,10 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
-const Card = ({ image, name, price }) => {
+const Card = ({ id,image, name, price }) => {
   return (
-    <div className="w-full p-4 rounded-2xl bg-gray-100 shadow-sm hover:shadow-lg transition-all cursor-pointer">
+    <NavLink to={id}>
+    <div className="w-full p-4 rounded-2xl shadow-sm hover:shadow-lg transition-all cursor-pointer">
       
       <div className="h-40 flex justify-center items-center relative">
         <img src={`http://localhost:3000/uploads/${image}`} alt={name} className="w-32 object-contain" />
@@ -12,6 +14,7 @@ const Card = ({ image, name, price }) => {
         <p className="font-bold">{price}</p>
       </div>
     </div>
+    </NavLink>
   );
 };
 

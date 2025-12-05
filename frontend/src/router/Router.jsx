@@ -7,6 +7,7 @@ import AdminLogin from '../components/AdminLogin'
 import Admin from '../pages/Admin'
 import UserLogin from '../components/UserLogin'
 import UserSignup from '../components/UserSignup'
+import ShopDescription from '../components/ShopDescription'
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -17,6 +18,10 @@ const Router = () => {
     {
         path:'/shop',
         element:<Shop />
+    },
+    {
+        path:'/shop/:id',
+        element:<ShopDescription />
     },
     {
         path:'/admin/login',
@@ -34,6 +39,7 @@ const Router = () => {
         path:'/user/signup',
         element:<UserSignup />
     },
+
   ])
   return (
     <div>

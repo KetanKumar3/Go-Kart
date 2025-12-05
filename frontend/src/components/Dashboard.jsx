@@ -9,6 +9,7 @@ const Dashboard = () => {
   const [addelement, setAddElement] = useState({
     image: null,
     name: "",
+    description:"",
     price: "",
   });
 
@@ -42,7 +43,7 @@ const Dashboard = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!addelement.image || !addelement.name || !addelement.price) {
+    if (!addelement.image || !addelement.name || !addelement.description || !addelement.price) {
       toast.error("Please fill all fields");
       return;
     }
@@ -50,6 +51,7 @@ const Dashboard = () => {
     const formData = new FormData();
     formData.append("image", addelement.image);
     formData.append("name", addelement.name);
+    formData.append("description", addelement.description);
     formData.append("price", addelement.price);
 
     try {
@@ -68,6 +70,7 @@ const Dashboard = () => {
         setAddElement({
           image: null,
           name: "",
+          description:"",
           price: "",
         });
       }
@@ -114,11 +117,8 @@ const Dashboard = () => {
 
   return (
     <div className="w-full flex justify-center items-center px-6 py-10 bg-gray-50">
-      {/* Switch between Add & Delete */}
+      
       {product ? (
-        // ============================
-        //        DELETE PRODUCT
-        // ============================
         <form
           onSubmit={handleDeleteSubmit}
           className="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg space-y-6"
@@ -155,9 +155,7 @@ const Dashboard = () => {
           </button>
         </form>
       ) : (
-        // ============================
-        //        ADD PRODUCT
-        // ============================
+       
         <form
           onSubmit={handleSubmit}
           className="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg space-y-6"
@@ -197,6 +195,18 @@ const Dashboard = () => {
           </div>
 
           <div>
+            <label className="block font-medium mb-1">Product Description</label>
+            <input
+              name="description"
+              value={addelement.description}
+              onChange={handleChange}
+              type="text"
+              placeholder="Enter description"
+              className="w-full border border-gray-300 rounded-xl p-3 bg-white focus:outline-none focus:ring-2 focus:ring-black"
+            />
+          </div>
+
+          <div>
             <label className="block font-medium mb-1">Price</label>
             <input
               name="price"
@@ -210,7 +220,7 @@ const Dashboard = () => {
 
           <button
             type="submit"
-            className="w-full px-8 py-3 bg-black text-white rounded-xl hover:bg-gray-800 transition-all font-semibold"
+            className="w-full px-8 py-3 bg-black text-white rounded-xl hover:bg-gray-800 hover:cursor-pointer transition-all font-semibold"
           >
             Add Product
           </button>

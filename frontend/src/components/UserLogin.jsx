@@ -71,7 +71,7 @@ const UserLogin = () => {
 
         <button
           type="submit"
-          className="w-full px-8 py-3 bg-black text-white rounded-xl hover:bg-gray-800 transition-all font-semibold"
+          className="w-full px-8 py-3 bg-black text-white rounded-xl hover:bg-gray-800 hover:cursor-pointer transition-all font-semibold"
         >
           Submit
         </button>
