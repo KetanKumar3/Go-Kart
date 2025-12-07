@@ -30,6 +30,7 @@ const LatestProducts = () => {
   // ];
 
   const [products,setProducts] = useState([])
+  
       
     
     const fetchProduct =async () => {
@@ -50,7 +51,7 @@ const LatestProducts = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {products.map((item, i) => (
-          <Card key={i} image={item.image} name={item.name} price={item.price} />
+          <Card key={i} id={item._id} image={item.image} name={item.name} price={item.price} labels="Home" />
         ))}
       </div>
     </div>

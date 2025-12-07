@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Home from '../pages/Home'
 import Shop from '../pages/Shop'
@@ -8,6 +8,8 @@ import Admin from '../pages/Admin'
 import UserLogin from '../components/UserLogin'
 import UserSignup from '../components/UserSignup'
 import ShopDescription from '../components/ShopDescription'
+import UserProfile from '../components/UserProfile'
+import Splash from '../components/Splash'
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -39,11 +41,24 @@ const Router = () => {
         path:'/user/signup',
         element:<UserSignup />
     },
-
+    {
+        path:'/profile',
+        element:<UserProfile />
+    },
   ])
+
+  const [splash,setSplash] = useState(true)
+  
+  useEffect(()=>{
+    setTimeout(()=>{
+       setSplash(false)
+    },5000)
+  },[])  
+  
+
   return (
     <div>
-        <RouterProvider router={router} />
+        {splash ? <Splash /> : <RouterProvider router={router} />}
     </div>
   )
 }

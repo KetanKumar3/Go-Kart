@@ -158,3 +158,14 @@ export const singleProduct = async (req, res) => {
     return res.status(500).json({ msg: err.message });
   }
 };
+
+export const userProfile = async (req,res) => {
+       const {token} = req.body
+
+       const verifyToken = jwt.verify(token,process.env.SECRET)
+       const userId = verifyToken.userId
+       
+       const userProfile = await User.findById({_id:userId})
+
+       return res.json({name:userProfile.name})
+}

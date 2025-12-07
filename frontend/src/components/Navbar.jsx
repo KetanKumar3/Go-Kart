@@ -106,8 +106,8 @@ const Navbar = () => {
 
               {profile && (
                 <div className="absolute bg-white shadow-lg p-3 rounded-md mt-2 w-32 z-10">
-                  <p className="hover:bg-gray-100 p-2 rounded">Profile</p>
-                  <p onClick={handleUserLogout} className="hover:bg-gray-100 p-2 rounded">Logout</p>
+                  <NavLink to="/profile"><p className="hover:bg-gray-100 p-2 rounded">Profile</p></NavLink>
+                  <p onClick={handleUserLogout} className="hover:bg-gray-100 p-2 rounded hover:cursor-pointer">Logout</p>
                 </div>
               )}
             </div>

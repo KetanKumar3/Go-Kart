@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Navbar from "./Navbar";
 
 const ShopDescription = () => {
   const { id } = useParams();
@@ -19,6 +20,8 @@ const ShopDescription = () => {
     return <p className="text-center mt-20 text-xl">Loading...</p>;
 
   return (
+    <>
+    <Navbar />
     <div className="max-w-4xl mx-auto p-10 mt-10 bg-white shadow-xl rounded-xl">
       <div className="flex gap-10">
 
@@ -34,14 +37,11 @@ const ShopDescription = () => {
           <p className="text-gray-600 leading-relaxed">
             {product.description || "No description available."}
           </p>
-
-          <button className="px-6 py-3 bg-black text-white rounded-lg mt-8 hover:bg-gray-800">
-            Add to Cart
-          </button>
         </div>
 
       </div>
     </div>
+    </>
   );
 };
 
