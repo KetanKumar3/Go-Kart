@@ -7,7 +7,7 @@ const ShopDescription = () => {
   const [product, setProduct] = useState(null);
 
   const fetchProductDetails = async () => {
-    const res = await fetch(`http://localhost:3000/shop/${id}`);
+    const res = await fetch(`https://go-kart-u90x.onrender.com/shop/${id}`);
     const data = await res.json();
     setProduct(data.product);
   };
@@ -21,26 +21,39 @@ const ShopDescription = () => {
 
   return (
     <>
-    <Navbar />
-    <div className="max-w-4xl mx-auto p-10 mt-10 bg-white shadow-xl rounded-xl">
-      <div className="flex gap-10">
+      <Navbar />
 
-        <img
-          src={`http://localhost:3000/uploads/${product.image}`}
-          className="w-80 h-80 object-contain rounded-lg shadow"
-        />
+      <div className="w-full px-4 md:px-6 lg:px-20 py-10">
+        <div className="max-w-5xl mx-auto bg-white shadow-xl rounded-xl p-6 md:p-10">
 
-        <div>
-          <h1 className="text-3xl font-bold mb-5">{product.name}</h1>
-          <p className="text-2xl font-semibold mb-5">₹ {product.price}</p>
+          <div className="flex flex-col md:flex-row gap-8 md:gap-12">
 
-          <p className="text-gray-600 leading-relaxed">
-            {product.description || "No description available."}
-          </p>
+            <div className="flex justify-center md:justify-start">
+              <img
+                src={`http://localhost:3000/uploads/${product.image}`}
+                className="w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 object-contain rounded-lg shadow"
+                alt={product.name}
+              />
+            </div>
+
+            
+            <div className="flex-1">
+              <h1 className="text-2xl sm:text-3xl font-bold mb-4">
+                {product.name}
+              </h1>
+
+              <p className="text-xl sm:text-2xl font-semibold mb-6">
+                ₹ {product.price}
+              </p>
+
+              <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
+                {product.description || "No description available."}
+              </p>
+            </div>
+
+          </div>
         </div>
-
       </div>
-    </div>
     </>
   );
 };

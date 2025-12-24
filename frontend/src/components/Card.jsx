@@ -1,42 +1,28 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const Card = ({ id,image, name, price,labels }) => {
+const Card = ({ id, image, name, price, labels }) => {
+  const linkTo = labels === "Home" ? `shop/${id}` : id;
 
-  console.log(labels)
   return (
-    <>
-    {
-      labels === "Home" ? (
-        <NavLink to={`shop/${id}`}>
-    <div className="w-full p-4 rounded-2xl shadow-sm hover:shadow-lg transition-all cursor-pointer">
-      
-      <div className="h-40 flex justify-center items-center relative">
-        <img src={`http://localhost:3000/uploads/${image}`} alt={name} className="w-32 object-contain" />
-      </div>
-      <div className="flex justify-between items-center mt-4">
-        <p className="font-medium">{name}</p>
-        <p className="font-bold">{price}</p>
-      </div>
-    </div>
-    </NavLink>
-      ) : (
-        <NavLink to={id}>
-    <div className="w-full p-4 rounded-2xl shadow-sm hover:shadow-lg transition-all cursor-pointer">
-      
-      <div className="h-40 flex justify-center items-center relative">
-        <img src={`http://localhost:3000/uploads/${image}`} alt={name} className="w-32 object-contain" />
-      </div>
-      <div className="flex justify-between items-center mt-4">
-        <p className="font-medium">{name}</p>
-        <p className="font-bold">{price}</p>
-      </div>
-    </div>
-    </NavLink>
-      )
+    <NavLink to={linkTo}>
+      <div className="w-full p-4 rounded-2xl shadow-sm hover:shadow-lg transition-all cursor-pointer bg-white">
 
-    }
-    </>
+        <div className="h-40 sm:h-48 flex justify-center items-center">
+          <img
+            src={`https://go-kart-u90x.onrender.com/uploads/${image}`}
+            alt={name}
+            className="w-24 sm:w-32 md:w-36 object-contain transition-transform duration-300 hover:scale-105"
+          />
+        </div>
+
+        <div className="flex justify-between items-center mt-3 text-sm sm:text-base">
+          <p className="font-medium truncate w-2/3">{name}</p>
+          <p className="font-bold whitespace-nowrap">₹{price}</p>
+        </div>
+
+      </div>
+    </NavLink>
   );
 };
 

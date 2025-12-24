@@ -1,40 +1,55 @@
-import React from 'react'
+import React from 'react';
 
 const Footer = () => {
   return (
-    <div className='grid grid-cols-4 justify-between px-30 py-20'>
-        <div>
-            <h3 className='text-3xl font-bold'>GoKart</h3>
-            <p className='pr-8 text-sm'>Welcome to gocart, your ultimate destination for the latest and smartest gadgets. From smartphones and smartwatches to essential accessories, we bring you the best in innovation — all in one place.</p>
-        </div>
-        <div>
-            <ul>
-                <li className='text-xl font-medium'>Products</li>
-                <li>Earphones</li>
-                <li>Headphones</li>
-                <li>Smartphones</li>
-                <li>Laptop</li>
-            </ul>
-        </div>
-        <div>
-            <ul>
-                <li className='text-xl font-medium'>Websites</li>
-                <li>Home</li>
-                <li>Privacy Policy</li>
-                <li>Become Plus Member</li>
-                <li>Create Your Store</li>
-            </ul>
-        </div>
-        <div>
-            <ul>
-                <li className='text-xl font-medium'>Contact</li>
-                <li>+1234567890</li>
-                <li>contact@example.com</li>
-                <li>794 Francisco, 94102</li>
-            </ul>
-        </div>
-    </div>
-  )
-}
+    <div className="w-full bg-gray-100 px-6 md:px-20 lg:px-32 py-14">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
 
-export default Footer
+        
+        <div>
+          <h3 className="text-3xl font-bold mb-3">GoKart</h3>
+          <p className="text-sm leading-relaxed">
+            Welcome to GoKart, your ultimate destination for the latest and 
+            smartest gadgets. From smartphones and smartwatches to essential 
+            accessories, we bring you the best in innovation — all in one place.
+          </p>
+        </div>
+
+        
+        <div>
+          <ul className="space-y-2">
+            <li className="text-xl font-semibold mb-2">Products</li>
+            <li className="hover:translate-x-1 transition">Earphones</li>
+            <li className="hover:translate-x-1 transition">Headphones</li>
+            <li className="hover:translate-x-1 transition">Smartphones</li>
+            <li className="hover:translate-x-1 transition">Laptop</li>
+          </ul>
+        </div>
+
+        
+        <div>
+          <ul className="space-y-2">
+            <li className="text-xl font-semibold mb-2">Websites</li>
+            <li className="hover:translate-x-1 transition">Home</li>
+            <li className="hover:translate-x-1 transition">Privacy Policy</li>
+            <li className="hover:translate-x-1 transition">Become Plus Member</li>
+            <li className="hover:translate-x-1 transition">Create Your Store</li>
+          </ul>
+        </div>
+
+    
+        <div>
+          <ul className="space-y-2">
+            <li className="text-xl font-semibold mb-2">Contact</li>
+            <li className="hover:translate-x-1 transition">+1234567890</li>
+            <li className="hover:translate-x-1 transition">contact@example.com</li>
+            <li className="hover:translate-x-1 transition">794 Francisco, 94102</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  );
+};
+
+export default Footer;

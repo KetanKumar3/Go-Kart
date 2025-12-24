@@ -13,7 +13,8 @@ dotenv.config()
 connectDB()
 
 app.use(cors({
-    origin:"http://localhost:5173",
+    origin:["https://dulcet-tarsier-efe749.netlify.app"],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials:true
 }))
 
@@ -27,7 +28,7 @@ app.get('/',(req,res)=>{
 })
 
 app.use('/',router)
-console.log("Working directory:", process.cwd());
+// console.log("Working directory:", process.cwd());
 
 
 const PORT = process.env.PORT

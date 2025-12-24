@@ -8,7 +8,7 @@ const UserProfile = () => {
 
   const fetchProfile = async () => {
     try {
-      const response = await fetch("http://localhost:3000/profile", {
+      const response = await fetch("https://go-kart-u90x.onrender.com/profile", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -30,23 +30,31 @@ const UserProfile = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center mt-20 text-xl font-semibold">
+      <div className="flex justify-center items-center min-h-screen text-xl font-semibold">
         Loading profile...
       </div>
     );
   }
 
   return (
-    <div className="max-w-md mx-auto mt-20 p-8 bg-white shadow-xl rounded-2xl text-center">
-      <h1 className="text-3xl font-bold mb-4">User Profile</h1>
+    <div className="min-h-screen flex justify-center items-center bg-gray-100 px-4 py-10">
+      <div className="w-full max-w-sm sm:max-w-md bg-white p-6 sm:p-8 rounded-2xl shadow-xl text-center space-y-4">
+        <h1 className="text-2xl sm:text-3xl font-bold">User Profile</h1>
 
-      <div className=" p-4 rounded-xl text-lg font-medium">
-        Hey <span className="text-gray-600">{name}</span>, How're You?
+        <p className="text-lg sm:text-xl font-medium">
+          Hey <span className="text-gray-600">{name}</span>, how are you?
+        </p>
+
+        <p className="text-base sm:text-lg font-medium text-gray-700">
+          Thank you for visiting our website.
+        </p>
+
+        <NavLink to="/">
+          <span className="text-blue-600 font-semibold hover:underline pt-3 block">
+            Go to Home Page
+          </span>
+        </NavLink>
       </div>
-      <div className=" rounded-xl text-lg font-medium">
-         Thankyou for visiting on our website.
-      </div>
-      <NavLink to="/"><h1 className="pt-4 text-blue-500">Go to HomePage</h1></NavLink>
     </div>
   );
 };
